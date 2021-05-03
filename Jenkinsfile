@@ -3,24 +3,26 @@ podTemplate(containers: [
   ]) {
 
     node(POD_LABEL) {
-        stage('Pre Test') {
-            echo 'Installing dependencies'
-            sh 'go version'
-            sh 'go get -u golang.org/x/lint/golint'
-        }
+        container('golang') {
+            stage('Pre Test') {
+                echo 'Installing dependencies'
+                sh 'go version'
+                sh 'go get -u golang.org/x/lint/golint'
+            }
 
-        stage('Build') {
-            echo 'Compiling and building'
-            sh 'go build'
-        }
+            stage('Build') {
+                echo 'Compiling and building'
+                sh 'go build'
+            }
 
-        stage('Test') {
-            echo 'Running vetting'
-            sh 'go vet .'
-            echo 'Running linting'
-            sh 'golint .'
-            echo 'Running test'
-            sh 'go test -v'
+            stage('Test') {
+                echo 'Running vetting'
+                sh 'go vet .'
+                echo 'Running linting'
+                sh 'golint .'
+                echo 'Running test'
+                sh 'go test -v'
+            }
         }
     }
  }
