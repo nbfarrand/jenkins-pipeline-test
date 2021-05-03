@@ -10,6 +10,10 @@ podTemplate(containers: [
                 sh 'go get -u golang.org/x/lint/golint'
             }
 
+            stage('Checkout') {
+                checkout scm
+            }
+
             stage('Build') {
                 echo 'Compiling and building'
                 sh 'pwd'
