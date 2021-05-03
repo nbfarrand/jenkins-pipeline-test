@@ -12,7 +12,7 @@ podTemplate(containers: [
 
             stage('Build') {
                 echo 'Compiling and building'
-                sh 'echo Workspace dir is ${pwd()}'
+                sh 'pwd'
                 sh 'ls -al'
                 sh 'go build'
             }
