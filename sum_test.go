@@ -10,7 +10,7 @@ func TestSum(t *testing.T) {
 }
 
 func TestSumBroken(t *testing.T) {
-	total := Sum(4, 5)
+	total := Sum(5, 5) // Fixed
 	if total != 10 {
 		t.Errorf("Sum was incorrect, got: %d, want: %d.", total, 10)
 	}
